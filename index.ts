@@ -5,6 +5,7 @@ const ONE_SIGNAL_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/OneSignalSDK.js';
 const ONESIGNAL_NOT_SETUP_ERROR = 'OneSignal is not setup correctly.';
 const MAX_TIMEOUT = 30;
 
+const VueApp: any = Vue;
 let isOneSignalInitialized = false;
 const vueOneSignalFunctionQueue: IOneSignalFunctionCall[] = [];
 
@@ -855,7 +856,7 @@ const OneSignalVue: IOneSignal = {
 };
 
 const OneSignalVuePlugin = {
-  install(app: Vue) {
+  install(app: typeof VueApp) {
     app.prototype.$OneSignal = OneSignalVue as IOneSignal;
   }
 }
