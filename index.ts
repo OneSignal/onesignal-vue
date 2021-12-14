@@ -74,11 +74,32 @@ interface SetEmailOptions { identifierAuthHash?: string; emailAuthHash?: string;
 interface TagsObject<T> { [key: string]: T; }
 interface IOneSignalAutoPromptOptions { force?: boolean; forceSlidedownOverNative?: boolean; isInUpdateMode?: boolean; categoryOptions?: IOneSignalCategories; }
 interface IOneSignalCategories { positiveUpdateButton: string; negativeUpdateButton: string; savingButtonText: string; errorButtonText: string; updateMessage: string; tags: IOneSignalTagCategory[]; }
-export interface IOneSignalTagCategory { tag: string; label: string; checked?: boolean; }
+interface IOneSignalTagCategory { tag: string; label: string; checked?: boolean; }
 
+
+interface IInitObject {
+  appId: string;
+  subdomainName?: string;
+  requiresUserPrivacyConsent?: boolean;
+  promptOptions?: Object;
+  welcomeNotification?: Object;
+  notifyButton?: Object;
+  persistNotification?: boolean;
+  webhooks?: Object;
+  autoResubscribe?: boolean;
+  autoRegister?: boolean;
+  notificationClickHandlerMatch?: string;
+  notificationClickHandlerAction?: string;
+  serviceWorkerParam?: { scope: string };
+  serviceWorkerPath?: string;
+  serviceWorkerUpdaterPath?: string;
+  path?: string;
+  allowLocalhostAsSecureOrigin?: boolean;
+  [key: string]: any;
+}
 
 interface IOneSignal {
-	init(options?: any): Promise<void>
+	init(options: IInitObject): Promise<void>
 	on(event: string, listener: Function): void
 	off(event: string, listener: Function): void
 	once(event: string, listener: Function): void
@@ -121,7 +142,7 @@ interface IOneSignal {
 
 /* O N E S I G N A L   A P I  */
 
-function init(options: Object = {}) {
+function init(options: IInitObject) {
   return new Promise<void>(resolve => {
     if (isOneSignalInitialized) {
       return;
