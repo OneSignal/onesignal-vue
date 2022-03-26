@@ -1,4 +1,7 @@
-# onesignal-vue
+<h1 align="center">welcome to onesignal-ngx 👋</h1>
+
+[![npm version](https://img.shields.io/npm/v/onesignal-vue.svg)](https://www.npmjs.com/package/onesignal-vue) [![npm downloads](https://img.shields.io/npm/dm/onesignal-vue.svg)](https://www.npmjs.com/package/onesignal-vue)
+
 Vue OneSignal Plugin: Make it easy to integrate OneSignal with your Vue App!
 
 This is a JavaScript module that can be used to easily include [OneSignal](https://onesignal.com/) code in a website or app that uses Vue for its front-end codebase.
@@ -6,6 +9,9 @@ This is a JavaScript module that can be used to easily include [OneSignal](https
 OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 800k businesses to send 5 billion Push Notifications per day.
 
 You can find more information on OneSignal [here](https://onesignal.com/).
+
+* 🏠 [Homepage](https://onesignal.com)
+* 🖤 [npm](https://www.npmjs.com/package/onesignal-vue)
 
 ## Contents
 - [Install](#install)
@@ -159,15 +165,52 @@ See the official [OneSignal WebSDK reference](https://documentation.onesignal.co
 ---
 ## Advanced Usage
 ### Events and Event Listeners
-You can also listen for native OneSignal events like `subscriptionChange`.
+Use listeners to react to OneSignal-related events:
+
+* `subscriptionChange`
+* `permissionPromptDisplay`
+* `notificationPermissionChange`
+* `popoverShown`
+* `customPromptClick`
+* `notificationDisplay`
+* `notificationDismiss`
 
 **Example**
-```
+```js
 OneSignal.on('subscriptionChange', function(isSubscribed) {
   console.log("The user's subscription state is now:", isSubscribed);
 });
 ```
 
 See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-push-sdk) for all available event listeners.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/OneSignal/onesignal-vue/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## OneSignal
+
+* [Website](https://onesignal.com)
+* Twitter: [@onesignal](https://twitter.com/onesignal)
+* Github: [@OneSignal](https://github.com/OneSignal)
+* LinkedIn: [@onesignal](https://linkedin.com/company/onesignal)
+
+## Discord
+Reach out to us via our [Discord server](https://discord.com/invite/EP7gf6Uz7G)!
+
+## 📝 License
+
+Copyright © 2022 [OneSignal](https://github.com/OneSignal).<br />
+This project is [Modified MIT](https://github.com/OneSignal/onesignal-vue/blob/main/LICENSE) licensed.
+
+
+Enjoy!
+
 
 Enjoy!
