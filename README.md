@@ -1,4 +1,4 @@
-<h1 align="center">welcome to onesignal-ngx 👋</h1>
+<h1 align="center">welcome to onesignal-vue 👋</h1>
 
 [![npm version](https://img.shields.io/npm/v/onesignal-vue.svg)](https://www.npmjs.com/package/onesignal-vue) [![npm downloads](https://img.shields.io/npm/dm/onesignal-vue.svg)](https://www.npmjs.com/package/onesignal-vue)
 
