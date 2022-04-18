@@ -211,6 +211,3 @@ This project is [Modified MIT](https://github.com/OneSignal/onesignal-vue/blob/m
 
 
 Enjoy!
-
-
-Enjoy!
