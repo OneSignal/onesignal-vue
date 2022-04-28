@@ -20,6 +20,16 @@ You can find more information on OneSignal [here](https://onesignal.com/).
 - [Advanced Usage](#advanced-usage)
 
 ---
+## Vue Compatibility
+Make sure you install a plugin version compatible with your Vue environment.
+
+| Vue | OneSignal Plugin |
+|-----|------------------|
+| 2   | onesignal-vue              |
+| 3   | [onesignal-vue3](https://github.com/OneSignal/onesignal-vue3)               |
+
+
+---
 ## Install
 
 You can use `yarn` or `npm`.

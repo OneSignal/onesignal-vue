@@ -121,7 +121,7 @@ interface IOneSignal {
 	showSmsSlidedown(options?: AutoPromptOptions): Promise<void>
 	showEmailSlidedown(options?: AutoPromptOptions): Promise<void>
 	showSmsAndEmailSlidedown(options?: AutoPromptOptions): Promise<void>
-	getNotificationPermission(onComplete?: Function): Promise<NotificationPermission>
+	getNotificationPermission(onComplete?: Action<NotificationPermission>): Promise<NotificationPermission>
 	getUserId(callback?: Action<string | undefined | null>): Promise<string | undefined | null>
 	getSubscription(callback?: Action<boolean>): Promise<boolean>
 	setEmail(email: string, options?: SetEmailOptions): Promise<string|null>
@@ -166,7 +166,7 @@ function init(options: IInitObject) {
   });
 }
 
-  function on(event, listener): void {
+  function on(event: string, listener: () => void): void {
     if (!doesOneSignalExist()) {
       vueOneSignalFunctionQueue.push({
         name: 'on',
@@ -180,7 +180,7 @@ function init(options: IInitObject) {
     });
   }
 
-  function off(event, listener): void {
+  function off(event: string, listener: () => void): void {
     if (!doesOneSignalExist()) {
       vueOneSignalFunctionQueue.push({
         name: 'off',
@@ -194,7 +194,7 @@ function init(options: IInitObject) {
     });
   }
 
-  function once(event, listener): void {
+  function once(event: string, listener: () => void): void {
     if (!doesOneSignalExist()) {
       vueOneSignalFunctionQueue.push({
         name: 'once',
@@ -208,7 +208,7 @@ function init(options: IInitObject) {
     });
   }
 
-  function isPushNotificationsEnabled(callback): Promise<boolean> {
+  function isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -221,13 +221,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.isPushNotificationsEnabled(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showHttpPrompt(options): Promise<void> {
+  function showHttpPrompt(options?: AutoPromptOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -240,13 +240,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showHttpPrompt(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function registerForPushNotifications(options): Promise<void> {
+  function registerForPushNotifications(options?: RegisterOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -259,13 +259,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.registerForPushNotifications(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function setDefaultNotificationUrl(url): Promise<void> {
+  function setDefaultNotificationUrl(url: string): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -278,13 +278,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.setDefaultNotificationUrl(url)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function setDefaultTitle(title): Promise<void> {
+  function setDefaultTitle(title: string): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -297,13 +297,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.setDefaultTitle(title)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function getTags(callback): Promise<void> {
+  function getTags(callback?: Action<any>): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -316,13 +316,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getTags(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function sendTag(key, value, callback): Promise<Object | null> {
+  function sendTag(key: string, value: any, callback?: Action<Object>): Promise<Object | null> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -335,13 +335,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.sendTag(key, value, callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function sendTags(tags, callback): Promise<Object | null> {
+  function sendTags(tags: TagsObject<any>, callback?: Action<Object>): Promise<Object | null> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -354,13 +354,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.sendTags(tags, callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function deleteTag(tag): Promise<Array<string>> {
+  function deleteTag(tag: string): Promise<Array<string>> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -373,13 +373,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.deleteTag(tag)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function deleteTags(tags, callback): Promise<Array<string>> {
+  function deleteTags(tags: Array<string>, callback?: Action<Array<string>>): Promise<Array<string>> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -392,13 +392,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.deleteTags(tags, callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function addListenerForNotificationOpened(callback): Promise<void> {
+  function addListenerForNotificationOpened(callback?: Action<Notification>): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -411,13 +411,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.addListenerForNotificationOpened(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function setSubscription(newSubscription): Promise<void> {
+  function setSubscription(newSubscription: boolean): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -430,13 +430,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.setSubscription(newSubscription)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showHttpPermissionRequest(options): Promise<any> {
+  function showHttpPermissionRequest(options?: AutoPromptOptions): Promise<any> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -449,8 +449,8 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showHttpPermissionRequest(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
@@ -468,13 +468,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showNativePrompt()
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showSlidedownPrompt(options): Promise<void> {
+  function showSlidedownPrompt(options?: AutoPromptOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -487,13 +487,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showSlidedownPrompt(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showCategorySlidedown(options): Promise<void> {
+  function showCategorySlidedown(options?: AutoPromptOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -506,13 +506,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showCategorySlidedown(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showSmsSlidedown(options): Promise<void> {
+  function showSmsSlidedown(options?: AutoPromptOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -525,13 +525,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showSmsSlidedown(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showEmailSlidedown(options): Promise<void> {
+  function showEmailSlidedown(options?: AutoPromptOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -544,13 +544,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showEmailSlidedown(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function showSmsAndEmailSlidedown(options): Promise<void> {
+  function showSmsAndEmailSlidedown(options?: AutoPromptOptions): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -563,13 +563,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.showSmsAndEmailSlidedown(options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function getNotificationPermission(onComplete): Promise<NotificationPermission> {
+  function getNotificationPermission(onComplete?: Action<NotificationPermission>): Promise<NotificationPermission> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -582,13 +582,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getNotificationPermission(onComplete)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function getUserId(callback): Promise<string | undefined | null> {
+  function getUserId(callback?: Action<string | undefined | null>): Promise<string | undefined | null> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -601,13 +601,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getUserId(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function getSubscription(callback): Promise<boolean> {
+  function getSubscription(callback?: Action<boolean>): Promise<boolean> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -620,13 +620,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getSubscription(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function setEmail(email, options): Promise<string|null> {
+  function setEmail(email: string, options?: SetEmailOptions): Promise<string|null> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -639,13 +639,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.setEmail(email, options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function setSMSNumber(smsNumber, options): Promise<string | null> {
+  function setSMSNumber(smsNumber: string, options?: SetSMSOptions): Promise<string | null> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -658,8 +658,8 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.setSMSNumber(smsNumber, options)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
@@ -677,8 +677,8 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.logoutEmail()
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
@@ -696,13 +696,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.logoutSMS()
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function setExternalUserId(externalUserId, authHash): Promise<void> {
+  function setExternalUserId(externalUserId: string | undefined | null, authHash?: string): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -715,8 +715,8 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.setExternalUserId(externalUserId, authHash)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
@@ -734,8 +734,8 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.removeExternalUserId()
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
@@ -753,13 +753,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getExternalUserId()
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function provideUserConsent(consent): Promise<void> {
+  function provideUserConsent(consent: boolean): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -772,13 +772,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.provideUserConsent(consent)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function getEmailId(callback): Promise<string | null | undefined> {
+  function getEmailId(callback?: Action<string | undefined>): Promise<string | null | undefined> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -791,13 +791,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getEmailId(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function getSMSId(callback): Promise<string | null | undefined> {
+  function getSMSId(callback?: Action<string | undefined>): Promise<string | null | undefined> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -810,13 +810,13 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.getSMSId(callback)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
 
-  function sendOutcome(outcomeName, outcomeWeight): Promise<void> {
+  function sendOutcome(outcomeName: string, outcomeWeight?: number | undefined): Promise<void> {
     return new Promise(function (resolve, reject) {
       if (!doesOneSignalExist()) {
         vueOneSignalFunctionQueue.push({
@@ -829,8 +829,8 @@ function init(options: IInitObject) {
 
       window.OneSignal.push(() => {
         window.OneSignal.sendOutcome(outcomeName, outcomeWeight)
-          .then((value) => resolve(value))
-          .catch((error) => reject(error));
+          .then(value => resolve(value))
+          .catch(error => reject(error));
       });
     });
   }
@@ -882,4 +882,3 @@ const OneSignalVuePlugin = {
 }
 
 export default OneSignalVuePlugin;
-
