@@ -99,9 +99,9 @@ interface IInitObject {
 
 interface IOneSignal {
 	init(options: IInitObject): Promise<void>
-	on(event: string, listener: () => void): void
-	off(event: string, listener: () => void): void
-	once(event: string, listener: () => void): void
+	on(event: string, listener: (eventData?: any) => void): void
+	off(event: string, listener: (eventData?: any) => void): void
+	once(event: string, listener: (eventData?: any) => void): void
 	isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>
 	showHttpPrompt(options?: AutoPromptOptions): Promise<void>
 	registerForPushNotifications(options?: RegisterOptions): Promise<void>
@@ -166,7 +166,7 @@ function init(options: IInitObject) {
   });
 }
 
-  function on(event: string, listener: () => void): void {
+  function on(event: string, listener: (eventData?: any) => void): void {
     if (!doesOneSignalExist()) {
       vueOneSignalFunctionQueue.push({
         name: 'on',
@@ -180,7 +180,7 @@ function init(options: IInitObject) {
     });
   }
 
-  function off(event: string, listener: () => void): void {
+  function off(event: string, listener: (eventData?: any) => void): void {
     if (!doesOneSignalExist()) {
       vueOneSignalFunctionQueue.push({
         name: 'off',
@@ -194,7 +194,7 @@ function init(options: IInitObject) {
     });
   }
 
-  function once(event: string, listener: () => void): void {
+  function once(event: string, listener: (eventData?: any) => void): void {
     if (!doesOneSignalExist()) {
       vueOneSignalFunctionQueue.push({
         name: 'once',
