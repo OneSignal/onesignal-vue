@@ -12,9 +12,10 @@ let isOneSignalScriptFailed = false;
 
 const VueApp: any = Vue;
 
-window.OneSignalDeferred = window.OneSignalDeferred || [];
-
-addSDKScript();
+if (window) {
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  addSDKScript();
+}
 
 /* H E L P E R S */
 
@@ -201,6 +202,10 @@ interface IOneSignalUser {
 	removeEmail(email: string): void;
 	addSms(smsNumber: string): void;
 	removeSms(smsNumber: string): void;
+	addTag(key: string, value: string): void;
+	addTags(tags: { [key: string]: string }): void;
+	removeTag(key: string): void;
+	removeTags(keys: string[]): void;
 }
 interface IOneSignalPushSubscription {
 	id: string | null | undefined;
@@ -562,6 +567,30 @@ function userRemoveSms(smsNumber: string): void {
   });
 }
 
+function userAddTag(key: string, value: string): void {
+  window.OneSignalDeferred?.push((OneSignal) => {
+    OneSignal.User.addTag(key, value)
+  });
+}
+
+function userAddTags(tags: { [key: string]: string }): void {
+  window.OneSignalDeferred?.push((OneSignal) => {
+    OneSignal.User.addTags(tags)
+  });
+}
+
+function userRemoveTag(key: string): void {
+  window.OneSignalDeferred?.push((OneSignal) => {
+    OneSignal.User.removeTag(key)
+  });
+}
+
+function userRemoveTags(keys: string[]): void {
+  window.OneSignalDeferred?.push((OneSignal) => {
+    OneSignal.User.removeTags(keys)
+  });
+}
+
 function pushSubscriptionOptIn(): Promise<void> {
   return new Promise(function (resolve, reject) {
     if (isOneSignalScriptFailed) {
@@ -634,6 +663,10 @@ const UserNamespace: IOneSignalUser = {
 	removeEmail: userRemoveEmail,
 	addSms: userAddSms,
 	removeSms: userRemoveSms,
+	addTag: userAddTag,
+	addTags: userAddTags,
+	removeTag: userRemoveTag,
+	removeTags: userRemoveTags,
 	PushSubscription: PushSubscriptionNamespace,
 };
 
