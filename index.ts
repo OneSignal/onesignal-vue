@@ -12,7 +12,7 @@ let isOneSignalScriptFailed = false;
 
 const VueApp: any = Vue;
 
-if (window) {
+if (typeof window !== 'undefined') {
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   addSDKScript();
 }
