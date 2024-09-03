@@ -128,7 +128,7 @@ interface IOneSignalTagCategory { tag: string; label: string; checked?: boolean;
 type PushSubscriptionNamespaceProperties = { id: string | null | undefined; token: string | null | undefined; optedIn: boolean; };
 type SubscriptionChangeEvent = { previous: PushSubscriptionNamespaceProperties; current: PushSubscriptionNamespaceProperties; };
 type NotificationEventName = 'click' | 'foregroundWillDisplay' | 'dismiss' | 'permissionChange' | 'permissionPromptDisplay';
-type SlidedownEventName = 'slidedownShown';
+type SlidedownEventName = 'slidedownShown' | 'slidedownClosed' | 'slidedownAllowClick' | 'slidedownCancelClick';
 type OneSignalDeferredLoadedCallback = (onesignal: IOneSignalOneSignal) => void;
 interface IOSNotification {
   /**
