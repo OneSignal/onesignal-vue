@@ -1,6 +1,6 @@
 {
   "name": "onesignal-vue",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Vue OneSignal Plugin: Make it easy to integrate OneSignal with your Vue App!",
   "author": "rgomezp",
   "contributors": [
