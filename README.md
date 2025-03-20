@@ -204,6 +204,9 @@ Use listeners to react to OneSignal-related events:
 | Event Name | Callback Argument Type |
 |-|-|
 |'slidedownShown'      | boolean |
+|'slidedownClosed'      | boolean |
+|'slidedownAllowClick'      | boolean |
+|'slidedownCancelClick'      | boolean |
 
 ### Push Subscription Namespace
 | Event Name | Callback Argument Type |
