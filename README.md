@@ -1,4 +1,4 @@
-<h1 align="center">welcome to onesignal-vue 👋</h1>
+<h1 align="center">Welcome to onesignal-vue 👋</h1>
 
 <p>
   <a href="https://www.npmjs.com/package/onesignal-vue" target="_blank">
