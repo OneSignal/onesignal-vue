@@ -2,8 +2,7 @@ name: 🪳 Bug report
 description: File a bug report
 title: '[Bug]: '
 labels: ['Bug']
-assignees:
-  - OneSignal/eng-developer-sdk
+
 body:
   - type: markdown
     attributes:
