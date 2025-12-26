@@ -1,16 +1,14 @@
-name: 'CodeQL'
+name: "CodeQL"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 on:
-  push:
-    branches: ['main']
   pull_request:
-    branches: ['main']
+    branches: ["main"]
   schedule:
-    - cron: '18 4 * * 0'
+    - cron: "18 4 * * 0"
 
 jobs:
   analyze:
@@ -50,4 +48,4 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
         with:
-          category: '/language:${{matrix.language}}'
+          category: "/language:${{matrix.language}}"
