@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.2](https://github.com/OneSignal/onesignal-vue/compare/2.5.1...2.5.2) (2025-12-26)
+
+### Build System
+
+* sync with web-shim-codegen v3.0.8 ([c0900c3](https://github.com/OneSignal/onesignal-vue/commit/c0900c34c07be9bc2493ab88b8f4480b84d92ca6))
+
 ## [2.5.1](https://github.com/OneSignal/onesignal-vue/compare/2.5.0...2.5.1) (2025-12-26)
 
 ## [2.5.0](https://github.com/OneSignal/onesignal-vue/compare/2.4.2...2.5.0) (2025-09-18)
