@@ -262,8 +262,9 @@ export type UserNamespaceProperties = {
 
 export interface IInitObject {
   appId: string;
-  subdomainName?: string;
   requiresUserPrivacyConsent?: boolean;
+  safari_web_id?: string;
+  subdomainName?: string;
   promptOptions?: {
     slidedown: {
       prompts: {
@@ -279,7 +280,7 @@ export interface IInitObject {
          * @example
          *  categories: [{ tag: 'local_news', label: 'Local News' }] // The user will be tagged with local_news but will see "Local News" in the prompt.
          */
-        categories: {
+        categories?: {
           /** Should identify the action. */
           tag: string;
 
@@ -310,7 +311,7 @@ export interface IInitObject {
           acceptButton?: string;
 
           /** Cancels opt-in. Up to 15 characters. */
-          cancelMessage?: string;
+          cancelButton?: string;
 
           /** The message of the confirmation prompt displayed after the email and/or phone number is provided. Up to 90 characters. */
           confirmMessage?: string;
@@ -459,15 +460,13 @@ export interface IInitObject {
   };
   autoResubscribe?: boolean;
   autoRegister?: boolean;
-  notificationClickHandlerMatch?: string;
-  notificationClickHandlerAction?: string;
+  notificationClickHandlerMatch?: 'exact' | 'origin';
+  notificationClickHandlerAction?: 'navigate' | 'focus';
   path?: string;
   serviceWorkerParam?: { scope: string };
   serviceWorkerPath?: string;
   serviceWorkerOverrideForTypical?: boolean;
-  serviceWorkerUpdaterPath?: string;
-  allowLocalhostAsSecureOrigin?: boolean;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface IOneSignalOneSignal {
