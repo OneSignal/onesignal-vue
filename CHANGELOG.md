@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.4](https://github.com/OneSignal/onesignal-vue/compare/2.5.3...2.5.4) (2026-01-05)
+
+### Bug Fixes
+
+* update init object interface ([#78](https://github.com/OneSignal/onesignal-vue/issues/78)) ([2654349](https://github.com/OneSignal/onesignal-vue/commit/2654349f1ad4aab7daaba867380f17d6a0fa54b4))
+
 ## [2.5.3](https://github.com/OneSignal/onesignal-vue/compare/2.5.2...2.5.3) (2025-12-26)
 
 ### Build System
