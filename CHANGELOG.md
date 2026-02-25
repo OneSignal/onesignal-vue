@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.6.0](https://github.com/OneSignal/onesignal-vue/compare/2.5.4...2.6.0) (2026-02-25)
+
+### Features
+
+* add support for overriding OneSignal script src  ([#81](https://github.com/OneSignal/onesignal-vue/issues/81)) ([6dd8dda](https://github.com/OneSignal/onesignal-vue/commit/6dd8dda7e4558d1e645485099d5dbdab7abc660e))
+
 ## [2.5.4](https://github.com/OneSignal/onesignal-vue/compare/2.5.3...2.5.4) (2026-01-05)
 
 ### Bug Fixes
