@@ -226,6 +226,10 @@ export interface IOSNotificationActionButton {
   readonly launchURL?: string;
 }
 
+export interface IDisplayableOSNotification extends IOSNotification {
+  display(): void;
+}
+
 export interface NotificationClickResult {
   readonly actionId?: string;
   readonly url?: string;
@@ -240,7 +244,7 @@ export type NotificationEventTypeMap = {
 };
 
 export interface NotificationForegroundWillDisplayEvent {
-  readonly notification: IOSNotification;
+  readonly notification: IDisplayableOSNotification;
   preventDefault(): void;
 }
 
