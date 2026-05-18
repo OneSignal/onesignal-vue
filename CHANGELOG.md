@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.1](https://github.com/OneSignal/onesignal-vue/compare/2.7.0...2.7.1) (2026-05-18)
+
+### Build System
+
+* migrate to vite-plus toolchain ([#83](https://github.com/OneSignal/onesignal-vue/issues/83)) ([87d1646](https://github.com/OneSignal/onesignal-vue/commit/87d16463db3b0fa8e9b29f196bea9dca1ead873a))
+* migrate to vite-plus toolchain ([#83](https://github.com/OneSignal/onesignal-vue/issues/83)) ([#84](https://github.com/OneSignal/onesignal-vue/issues/84)) ([a143408](https://github.com/OneSignal/onesignal-vue/commit/a14340814d65bbe3756549ad1f7d88c1aa95f82b))
+
 ## [2.7.0](https://github.com/OneSignal/onesignal-vue/compare/2.6.0...2.7.0) (2026-02-27)
 
 ### Features
