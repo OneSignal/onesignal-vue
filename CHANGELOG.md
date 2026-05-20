@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.7.2](https://github.com/OneSignal/onesignal-vue/compare/2.7.1...2.7.2) (2026-05-20)
+
+### Bug Fixes
+
+* publish missing dist files ([#86](https://github.com/OneSignal/onesignal-vue/issues/86)) ([340fec9](https://github.com/OneSignal/onesignal-vue/commit/340fec9e16bf15d2a32b7d63a44898a4bdfc4448))
+
 ## [2.7.1](https://github.com/OneSignal/onesignal-vue/compare/2.7.0...2.7.1) (2026-05-18)
 
 ### Build System
