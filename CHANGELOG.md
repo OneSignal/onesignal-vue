@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.7.4](https://github.com/OneSignal/onesignal-vue/compare/2.7.3...2.7.4) (2026-06-25)
+
+### Bug Fixes
+
+* update dependencies ([#88](https://github.com/OneSignal/onesignal-vue/issues/88)) ([43952bb](https://github.com/OneSignal/onesignal-vue/commit/43952bb81d18bdb185555d58812e1df5f169b05c))
+
 ## [2.7.3](https://github.com/OneSignal/onesignal-vue/compare/2.7.2...2.7.3) (2026-06-01)
 
 ### Bug Fixes
